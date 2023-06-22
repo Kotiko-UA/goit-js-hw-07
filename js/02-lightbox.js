@@ -9,12 +9,25 @@ function createMarkup(imgs) {
     .map(({ preview, original, description } = {}) => {
       return `  <li class="gallery__item">
         <a href="${original}" class="gallery__link">
-          <img data-source="${original}" class="gallery__image" src="${preview}" alt="${description}" />
+          <img class="gallery__image" src="${preview}" alt="${description}" />
         </a>
     </li>`;
     })
     .join('');
 }
+
+const option = {
+  captions: true,
+  captionType: 'attr',
+  captionsData: 'alt',
+  captionPosition: 'bottom',
+  captionDelay: 250,
+};
+
+let gallery = new SimpleLightbox(
+  '.gallery .gallery__item .gallery__link',
+  option
+);
 
 refs.galleryEl.addEventListener('click', onClick);
 
@@ -22,6 +35,6 @@ function onClick(e) {
   e.preventDefault();
 
   if (e.target.classList.contains('gallery__image')) {
-    createModal(e);
+    gallery.on('show.simplelightbox');
   }
 }
