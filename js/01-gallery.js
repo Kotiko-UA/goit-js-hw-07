@@ -41,6 +41,5 @@ function createModal(data) {
       instance.close();
       document.removeEventListener('keydown', onClickEsc);
     }
-    console.log(e.code);
   }
 }
