@@ -34,10 +34,13 @@ function createModal(data) {
   `
   );
   instance.show();
-  document.addEventListener('keydown', (onClickEsc) => {});
-}
+  document.addEventListener('keydown', onClickEsc);
 
-function onClickEsc(e) {
-  if (e.code === 'Escape') {
+  function onClickEsc(e) {
+    if (e.code === 'Escape') {
+      instance.close();
+      document.removeEventListener('keydown', onClickEsc);
+    }
+    console.log(e.code);
   }
 }
