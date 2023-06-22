@@ -7,7 +7,7 @@ refs.galleryEl.insertAdjacentHTML('beforeend', createMarkup(galleryItems));
 
 function createMarkup(imgs) {
   return imgs
-    .map(({ preview, original, description } = {}, idx) => {
+    .map(({ preview, original, description } = {}) => {
       return `  <li class="gallery__item">
         <a href="${original}" class="gallery__link">
           <img data-source="${original}" class="gallery__image" src="${preview}" alt="${description}" />
